@@ -31,7 +31,6 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Product createProduct(String token, String name, String description, Double mrp, Double sellingPrice, List<ProductImage> images, Category category) throws ProductAlreadyPresentException, InvalidTokenException {
         // Todo authenticate user
-
         UserResponseDto userResponseDto = verifyToken(token);
         if(userResponseDto == null){
             throw new InvalidTokenException("Invalid token, pls login");
@@ -60,7 +59,6 @@ public class ProductServiceImpl implements ProductService {
             throw new InvalidTokenException("Invalid token, pls login");
         }
         Long userId = userResponseDto.getUserId();
-
         Optional<Product> fetchedProduct = getProductById(userId, productId);
         if(fetchedProduct.isPresent()) return fetchedProduct.get();
         throw new ProductNotFoundException("Product with id "+productId+" not found");

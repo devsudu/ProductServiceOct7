@@ -37,6 +37,7 @@ public class ProductController {
 
     @GetMapping("/{productId}")
     public ResponseEntity<ProductResponseDto> getProduct(@RequestHeader HttpHeaders headers, @PathVariable("productId") Long productId) throws InvalidTokenException, ProductNotFoundException {
+        System.out.println("=======--");
         String token = headers.getFirst("token");
         Product product = productService.getProduct(token, productId);
         return new ResponseEntity<>(
