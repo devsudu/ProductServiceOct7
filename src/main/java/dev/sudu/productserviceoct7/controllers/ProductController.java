@@ -198,4 +198,13 @@ public class ProductController {
                 HttpStatus.OK
         );
     }
+
+    @GetMapping("/demo")
+    ResponseEntity<Boolean> demoApi() {
+        return new ResponseEntity<>(
+                true,
+                null,
+                HttpStatus.OK
+        );
+    }
 }
